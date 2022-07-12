@@ -23,4 +23,6 @@
 - `api/v1/user/{user}/website/subscribe`: `POST` - User subscribes to a website (Requires `website_id`)
 - `api/v1/website/{website}/post/create`: `POST` - Create a new post for a website (Requires `title`, `content`)
 
-
+> Note: Whenever a new post is published on a particular website, 
+> all the users who subscribed to that website will receive an email notification after running
+>  `php artisan queue:work` command
