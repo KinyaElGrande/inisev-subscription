@@ -9,8 +9,17 @@ class WebsiteSubscription extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+    ];
+
     public function website()
     {
-        return $this->belongsTo(Website::class);
+        return $this->belongsTo(Website::class, 'website_id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class,'user_id');
     }
 }

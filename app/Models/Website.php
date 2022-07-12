@@ -10,7 +10,7 @@ class Website extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name',
+        'name', 'url'
     ];
 
     public function posts()
@@ -21,5 +21,12 @@ class Website extends Model
     public function subscriptions()
     {
         return $this->hasMany(WebsiteSubscription::class);
+    }
+
+    public function subscribe(User $user)
+    {
+        return $this->subscriptions()->create([
+            'user_id' => $user->id,
+        ]);
     }
 }

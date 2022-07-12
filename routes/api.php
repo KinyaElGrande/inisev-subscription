@@ -1,6 +1,8 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\API\SubscriptionController;
+use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\WebsiteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +16,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::prefix('/v1')->group(function () {
+    Route::post('/user/create', [UserController::class, 'create'])->name('user.create');
+    Route::post('/user/{user}/website/subscribe', [SubscriptionController::class, 'subscribe'])->name('website.subscribe');
+
+    Route::post('/website/create', [WebsiteController::class, 'createWebsite'])->name('website.create');
+    Route::post('/website/{website}/post/create', [WebsiteController::class, 'createPost'])->name('website.post.create');
 });
+
+
