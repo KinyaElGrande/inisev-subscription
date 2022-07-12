@@ -3,8 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Post;
-use App\Notifications\NewPost;
-use Illuminate\Support\Facades\Notification;
+use SubscriptionService;
 
 class PostObserver
 {
@@ -16,10 +15,7 @@ class PostObserver
      */
     public function created(Post $post)
     {
-        $subscriptions = $post->website->subscriptions()->get();
-        foreach ($subscriptions as $subscription) {
-            $subscription->user->notify(new NewPost($post));
-        }
+       SubscriptionService::sendEmail($post);
     }
 
 }

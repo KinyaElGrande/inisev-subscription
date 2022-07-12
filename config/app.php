@@ -195,6 +195,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * Application Service Providers...
+         */
+        App\Providers\SubscriptionServiceProvider::class,
     ],
 
     /*
@@ -209,7 +213,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
+        'SubscriptionService' => App\Services\Subscription\Facade::class
+    ])->toArray()
 
 ];
