@@ -4,9 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\Website;
-use App\Notifications\NewPost;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Validator;
 
 class WebsiteController extends Controller
@@ -30,7 +28,7 @@ class WebsiteController extends Controller
     public function createPost(Request $request, Website $website)
     {
         $validator = Validator::make($request->all(), [
-            'title' => 'required|string|max:255|unique:posts',
+            'title' => 'required|string|max:255',
             'description' => 'required|string',
         ]);
 
@@ -38,7 +36,7 @@ class WebsiteController extends Controller
             return response()->json($validator->errors(), 422);
         }
 
-         $website->posts()->create([
+        $website->posts()->create([
             'title' => $validator->validated()['title'],
             'description' => $validator->validated()['description'],
         ]);
