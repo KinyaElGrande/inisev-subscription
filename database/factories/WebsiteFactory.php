@@ -18,7 +18,7 @@ class WebsiteFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'url' => fake()->url(),
+            'url' => fake()->unique()->url(),
         ];
     }
 }
