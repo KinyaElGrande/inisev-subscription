@@ -8,11 +8,12 @@ use App\Notifications\NewPost;
 
 class Service
 {
-    public function sendEmail(Post $post)
+    public function sendEmailNotification(Post $post)
     {
-        $subscriptions = $post->website->subscriptions()->get();
-        foreach ($subscriptions as $subscription) {
-            $subscription->user->notify(new NewPost($post));
-        }
+        $post->website->subscriptions()->chunk(100, function ($subscriptions) use ($post) {
+            $subscriptions->each(function ($subscription) use ($post) {
+                $subscription->user->notify(new NewPost($post));
+            });
+        });
     }
 }
