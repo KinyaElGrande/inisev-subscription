@@ -15,7 +15,6 @@ class PostObserver
      */
     public function created(Post $post)
     {
-       SubscriptionService::sendEmailNotification($post);
+       SubscriptionService::createPostEmailNotification($post);
     }
-
 }
