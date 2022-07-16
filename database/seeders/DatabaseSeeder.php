@@ -6,7 +6,6 @@ use App\Models\Post;
 use App\Models\User;
 use App\Models\Website;
 use App\Models\WebsiteSubscription;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -18,9 +17,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-         User::factory(100)->create();
-         Website::factory(100)->create();
-         Post::factory(1000)->create();
-         WebsiteSubscription::factory(100)->create();
+        User::factory(100)->create();
+        Website::factory(100)->create();
+        WebsiteSubscription::factory(100)->create();
+        Post::factory(1000)->create();
     }
 }

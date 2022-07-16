@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('website_subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->unique();
-            $table->unsignedBigInteger('website_id')->unique();
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('website_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('website_id')->references('id')->on('websites')->onDelete('cascade');
             $table->timestamps();

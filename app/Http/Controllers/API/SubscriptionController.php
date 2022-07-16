@@ -13,7 +13,7 @@ class SubscriptionController extends Controller
     public function subscribe(Request $request, User $user)
     {
         $validator = Validator::make($request->all(), [
-            'website_id' => 'required|numeric|exists:websites,id|unique:website_subscriptions',
+            'website_id' => 'required|numeric|exists:websites,id',
         ]);
 
         if ($validator->fails()) {
