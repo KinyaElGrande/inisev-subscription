@@ -19,4 +19,9 @@ class Post extends Model
     {
         return $this->belongsTo(Website::class);
     }
+
+    public function emailNotifications()
+    {
+        return $this->hasMany(PostEmailNotification::class);
+    }
 }

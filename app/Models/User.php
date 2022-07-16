@@ -24,4 +24,9 @@ class User extends Model
     {
         return $this->hasMany(WebsiteSubscription::class);
     }
+
+    public function emailNotifications()
+    {
+        return $this->hasMany(PostEmailNotification::class);
+    }
 }
