@@ -25,4 +25,5 @@
 
 > Note: Whenever a new post is published on a particular website, 
 > all the users who subscribed to that website will receive an email notification after running
->  `php artisan queue:work` command
+> `php artisan posts:notify` which will push email jobs onto the queue , then `php artisan queue:work` command to start 
+> the Queue worker.
